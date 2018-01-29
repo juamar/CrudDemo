@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2018 10:10:21 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Curso" table="curso" catalog="test" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment"></generator>  
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" />
+        </property>
+        <set name="alumnos" table="alumno" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Curso" />
+            </key>
+            <one-to-many class="model.pojos.Alumno" />
+        </set>
+    </class>
+</hibernate-mapping>
