@@ -32,7 +32,8 @@ public class CursoController
     @RequestMapping(value = "/cursos", method = RequestMethod.GET)
     public ModelAndView cursos(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        ModelAndView mv = new ModelAndView("cursos");
+        
+        ModelAndView mv = new ModelAndView("/cursos");
         List<Curso> c = null;
         
         try
@@ -62,7 +63,7 @@ public class CursoController
     public ModelAndView newCurso()
     {
         //return "newCurso";
-        return new ModelAndView("newCurso", "curso", new Curso());
+        return new ModelAndView("/newCurso", "curso", new Curso());
     }
     
     @RequestMapping(value = "/cursos/addCurso", method = RequestMethod.POST)

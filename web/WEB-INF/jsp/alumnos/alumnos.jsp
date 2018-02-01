@@ -38,6 +38,9 @@
                     <td>
                         <c:out value="${alumno.getCurso().getNombre()}"></c:out>
                     </td>
+                    <td>
+                        <a class="danger" href="/CrudDemo/alumnos/deleteAlumno/${alumno.getId()}">Borrar</a>
+                    </td>
                 </tr>
             </c:forEach>
             

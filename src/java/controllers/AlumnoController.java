@@ -44,6 +44,13 @@ public class AlumnoController
             Query query = session.createQuery(hql);
             a =  query.list();
             
+            //Más consultas para evitar el lazy false y el problema de performance que conlleva.
+            /*
+            Y haremos algo como:
+            
+            a.setCurso(c); //c será una isntancia de curso que me traje de una de las supuestas consultas de arriba.
+            */
+            
             tx.commit();
             session.close();
             
@@ -90,7 +97,7 @@ public class AlumnoController
     @RequestMapping(value = "/alumnos/addAlumno", method = RequestMethod.POST)
     public ModelAndView submit(@Valid @ModelAttribute("alumno")Alumno a, 
       BindingResult result, ModelMap model)  {
-        System.out.println(a.getCurso().getId() + "," + a.getNombres());
+        //System.out.println(a.getCurso().getId() + "," + a.getNombres());
         if (result.hasErrors()) {
             return new ModelAndView("error");
         }
